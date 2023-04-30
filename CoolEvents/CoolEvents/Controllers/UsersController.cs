@@ -163,5 +163,84 @@ namespace CoolEvents.Controllers
         {
           return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            if (HttpContext.Session.GetString("IsAuthenticated") != "true")
+            {
+                return View();
+            }
+            else return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public IActionResult Login(string username, string password)
+        {
+            // Check if the username and password match a user in the database
+            var user = _context.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
+
+            if (user != null)
+            {
+                // If the user is found, set a session variable to indicate that the user is authenticated
+                HttpContext.Session.SetString("IsAuthenticated", "true");
+
+                //Save his username so that we can print it later: Hello, {User}
+                HttpContext.Session.SetString("Username", user.Username);
+
+
+                //Check if admin and save result
+                if (user.Role.Name == "Admin")
+                {
+                    HttpContext.Session.SetString("IsAdmin", "true");
+                }
+
+                // Redirect the user to the Home/Index action
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View("Login");
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Register(string username, string password, string firstName, string lastName)
+        {
+            // Check if the username already exists
+            if (_context.Users.Any(u => u.Username == username))
+            {
+                ModelState.AddModelError("Username", "Username already exists");
+                return View();
+            }
+
+            // Create a new user object and set its properties
+            var user = new User
+            {
+                Username = username,
+                Password = password,
+                FirstName = firstName,
+                LastName = lastName,
+                RoleId = 2 // Set the default role ID to 2 (the users role)
+            };
+
+            // Add the new user to the database
+            _context.Users.Add(user);
+            _context.SaveChanges();
+
+            // Set the session variables to indicate that the user is authenticated
+            HttpContext.Session.SetString("IsAuthenticated", "true");
+            HttpContext.Session.SetString("Username", user.Username);
+
+            // Redirect the user to the Home/Index action
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

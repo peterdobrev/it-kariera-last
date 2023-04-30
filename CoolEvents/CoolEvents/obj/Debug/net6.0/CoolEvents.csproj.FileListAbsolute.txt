@@ -270,3 +270,5 @@ C:\Users\Laptop\Documents\GitHub\it-kariera-last\CoolEvents\CoolEvents\obj\Debug
 C:\Users\Laptop\Documents\GitHub\it-kariera-last\CoolEvents\CoolEvents\obj\Debug\net6.0\CoolEvents.pdb
 C:\Users\Laptop\Documents\GitHub\it-kariera-last\CoolEvents\CoolEvents\obj\Debug\net6.0\CoolEvents.genruntimeconfig.cache
 C:\Users\Laptop\Documents\GitHub\it-kariera-last\CoolEvents\CoolEvents\obj\Debug\net6.0\ref\CoolEvents.dll
+C:\Users\Laptop\Documents\GitHub\it-kariera-last\CoolEvents\CoolEvents\obj\Debug\net6.0\scopedcss\Views\Users\Login.cshtml.rz.scp.css
+C:\Users\Laptop\Documents\GitHub\it-kariera-last\CoolEvents\CoolEvents\obj\Debug\net6.0\scopedcss\Views\Users\Register.cshtml.rz.scp.css

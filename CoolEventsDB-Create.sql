@@ -43,3 +43,7 @@ CREATE TABLE [Ticket] (
 -- Add default roles to Role table
 INSERT INTO [Role] ([Name])
 VALUES ('Admin'), ('User');
+
+
+INSERT INTO [User] ([Username], [Password], [FirstName], [LastName], [RoleId])
+VALUES ('admin', 'admin', 'admin', 'admin', 1);

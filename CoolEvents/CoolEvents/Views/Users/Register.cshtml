@@ -1,0 +1,37 @@
+﻿@model CoolEvents.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+<!--create a start for an html file-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="register-page">
+        <div class="form">
+            <form asp-action="Register" asp-controller="Users" method="post">
+                <p>Register</p>
+                <div class="form-group">
+                    <input asp-for="Username" class="form-control inputbox" placeholder="Username" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="Password" type="password" class="form-control inputbox" placeholder="Password" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="FirstName" class="form-control inputbox" placeholder="First Name" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="LastName" class="form-control inputbox" placeholder="Last Name" />
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

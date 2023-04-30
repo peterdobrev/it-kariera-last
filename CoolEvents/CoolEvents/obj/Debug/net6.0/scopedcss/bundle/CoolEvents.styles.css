@@ -47,3 +47,113 @@ button.accept-policy[b-e0rk8f3zgw] {
   white-space: nowrap;
   line-height: 60px;
 }
+/* _content/CoolEvents/Views/Users/Login.cshtml.rz.scp.css */
+.login-page[b-ob53tlauuy] {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+
+.form[b-ob53tlauuy] {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form-group[b-ob53tlauuy] {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    width: 100%;
+    border: 0;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form button[b-ob53tlauuy] {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #705dbe;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+    .form button:hover[b-ob53tlauuy], .form button:active[b-ob53tlauuy], .form button:focus[b-ob53tlauuy] {
+        background: #3f3d56;
+    }
+
+body[b-ob53tlauuy] {
+    background: #76b852; /* fallback for old browsers */
+    background: rgb(141,194,111);
+    background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+/* _content/CoolEvents/Views/Users/Register.cshtml.rz.scp.css */
+.register-page[b-phuk1b8wvk] {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+
+.form[b-phuk1b8wvk] {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form-group[b-phuk1b8wvk] {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    width: 100%;
+    border: 0;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form button[b-phuk1b8wvk] {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #705dbe;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+    .form button:hover[b-phuk1b8wvk], .form button:active[b-phuk1b8wvk], .form button:focus[b-phuk1b8wvk] {
+        background: #3f3d56;
+    }
+
+body[b-phuk1b8wvk] {
+    background: #76b852; /* fallback for old browsers */
+    background: rgb(141,194,111);
+    background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
