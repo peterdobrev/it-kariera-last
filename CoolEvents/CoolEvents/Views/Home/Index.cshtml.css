@@ -1,7 +1,7 @@
-﻿.event-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+﻿.event-container{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
 }
 
 .event-item {
@@ -10,11 +10,23 @@
     flex-direction: row;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 1rem;
+    width:75%;
+    margin: 0 auto 1rem auto;
+    
 }
 
+    .event-item:hover .overlay {
+        opacity: 1;
+    }
+    .event-item:hover .event-text{
+        opacity: 0.3;
+    }
+
 .event-image {
-    width:100%;
+    width: 100%;
     object-fit: cover;
+    border-radius: 50px;
 }
 
 .event-text {
@@ -35,6 +47,99 @@
     margin: 0;
 }
 
-.event-id{
-    visibility: collapse;
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+}
+
+.book-ticket {
+    font-size: 1.5rem;
+    color: white;
+}
+
+
+/*Below is css for the search box*/
+:root {
+    --primary: #11998e;
+    --secondary: #38ef7d;
+    --white: #fff;
+    --gray: #9b9b9b;
+}
+
+.form__group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    margin: auto;
+    width: 20%;
+    margin-bottom: 1rem;
+}
+
+.form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid var(--gray);
+    outline: 0;
+    font-size: 1.3rem;
+    color: var(--white);
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    text-align: center;
+    border-bottom: 1px solid wheat;
+}
+
+    .form__field::placeholder {
+        color: transparent;
+    }
+
+    .form__field:placeholder-shown ~ .form__label {
+        font-size: 1.3rem;
+        cursor: text;
+        top: 20px;
+    }
+
+.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: var(--gray);
+    width: 100%;
+    text-align:center;
+}
+
+.form__field:focus ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: var(--primary);
+    text-align: center;
+}
+
+.form__field:focus {
+    padding-bottom: 6px;
+    border-width: 3px;
+    border-image: linear-gradient(to right, var(--primary), var(--secondary));
+    border-image-slice: 1;
+}
+
+.form__field:required,
+.form__field:invalid {
+    box-shadow: none;
 }

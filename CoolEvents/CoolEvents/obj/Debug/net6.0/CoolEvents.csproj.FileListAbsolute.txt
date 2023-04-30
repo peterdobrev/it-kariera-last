@@ -274,3 +274,4 @@ C:\Users\Laptop\Documents\GitHub\it-kariera-last\CoolEvents\CoolEvents\obj\Debug
 C:\Users\Laptop\Documents\GitHub\it-kariera-last\CoolEvents\CoolEvents\obj\Debug\net6.0\scopedcss\Views\Users\Register.cshtml.rz.scp.css
 C:\Users\Laptop\Documents\GitHub\it-kariera-last\CoolEvents\CoolEvents\obj\Debug\net6.0\scopedcss\Views\Events\Index.cshtml.rz.scp.css
 C:\Users\Laptop\Documents\GitHub\it-kariera-last\CoolEvents\CoolEvents\obj\Debug\net6.0\scopedcss\Views\Home\Index.cshtml.rz.scp.css
+C:\Users\Laptop\Documents\GitHub\it-kariera-last\CoolEvents\CoolEvents\obj\Debug\net6.0\scopedcss\Views\Home\_DataCount.cshtml.rz.scp.css

@@ -39,5 +39,24 @@ namespace CoolEvents.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpGet]
+        public IActionResult DataCount()
+        {
+            if(HttpContext.Session.GetString("IsAdmin") != "true")
+            {
+                return new JsonResult(new { error = "Not admin, so not showing" })
+                {
+                    StatusCode = 420
+                };
+            }
+            else
+            {
+                int eventsNumber = _context.Events.Count();
+                int usersNumber = _context.Users.Count();
+                int ticketsNumber = _context.Tickets.Count();
+                return PartialView("_DataCount", new Tuple<int, int, int>(eventsNumber, usersNumber, ticketsNumber));
+            } 
+        }
     }
 }

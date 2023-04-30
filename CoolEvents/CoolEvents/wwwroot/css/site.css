@@ -1,5 +1,5 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -15,4 +15,14 @@ html {
 
 body {
   margin-bottom: 60px;
+      background-color: #c2b093
+}
+
+p{
+    padding: 5px;
+}
+
+.btn{
+    margin-top:1rem;
+    margin-bottom:0.5rem;
 }

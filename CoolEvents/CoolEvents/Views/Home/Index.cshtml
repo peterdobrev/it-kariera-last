@@ -1,18 +1,85 @@
 ﻿@model IEnumerable<CoolEvents.Models.Event>
 
+<div class="partialViewZone"></div>
+
+<div class="form__group field">
+    <div>
+        <input type="text" class="form__field" placeholder="Search events" name="form__events" id='search-input' onkeyup="filterEvents(this.value)" required />
+        <label for="name" class="form__label">Search</label>
+    </div>
+</div>
 <div class="event-container">
     @foreach (var item in Model)
     {
-        <div class="event-item">
+        <div class="event-item" data-event-id="@item.Id">
             @if (item.Image != null)
-                {
-                    <img class="event-image" src="@Url.Action("GetImage", "Events", new { id = item.Id })" alt="@item.Name" />
-                }            
+            {
+                <img class="event-image" src="@Url.Action("GetImage", "Events", new { id = item.Id })" alt="@item.Name" />
+            }
             <div class="event-text">
                 <h2 class="event-name">@item.Name</h2>
                 <p class="event-description">@item.Description</p>
-                <p class="event-id">@item.Id</p>
+            </div>
+            <div class="overlay">
+                <p class="book-ticket">Click to book a ticket</p>
             </div>
         </div>
     }
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function filterEvents(searchTerm) {
+        // Get all event items
+        var events = $('.event-item');
+
+        // Loop through all event items and hide those that don't match the search term
+        events.each(function () {
+            var eventName = $(this).find('.event-name').text().toLowerCase();
+            var eventDescription = $(this).find('.event-description').text().toLowerCase();
+
+            if (eventName.indexOf(searchTerm.toLowerCase()) === -1 && eventDescription.indexOf(searchTerm.toLowerCase()) === -1) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        console.log("trying to display data");
+        // Load the partial view from Home controller on page load
+        $.ajax({
+            type: 'GET',
+            url: '/Home/DataCount',
+            success: function (result) {
+                console.log("displayed data");
+                // Update the content of the partialViewZone with the result
+                $('.partialViewZone').html(result);
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr.responseText);
+            }
+        });
+
+        $('.event-item').click(function () {
+            var eventId = $(this).data('event-id');
+            console.log(eventId);
+            $.ajax({
+                type: 'POST',
+                url: '/Tickets/Create',
+                data: { eventId: eventId },
+                success: function (result) {
+                    // Handle the response from the server
+                    console.log(result);
+                    window.location.href = '/Tickets/Index';
+                },
+                error: function (xhr, status, error) {
+                    // Handle the error
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>
