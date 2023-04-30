@@ -1,8 +1,18 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<CoolEvents.Models.Event>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="event-container">
+    @foreach (var item in Model)
+    {
+        <div class="event-item">
+            @if (item.Image != null)
+                {
+                    <img class="event-image" src="@Url.Action("GetImage", "Events", new { id = item.Id })" alt="@item.Name" />
+                }            
+            <div class="event-text">
+                <h2 class="event-name">@item.Name</h2>
+                <p class="event-description">@item.Description</p>
+                <p class="event-id">@item.Id</p>
+            </div>
+        </div>
+    }
 </div>

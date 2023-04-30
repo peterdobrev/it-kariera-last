@@ -18,18 +18,41 @@ namespace CoolEvents.Models
 
         [Key]
         public int Id { get; set; }
+
         [Required]
         [StringLength(64)]
         public string Name { get; set; }
+
         [Required]
         [StringLength(255)]
         public string Description { get; set; }
-        [Required]
+
         public byte[] Image { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Event Image")]
+        public IFormFile ImageFile { get; set; }
+
         [Column(TypeName = "date")]
         public DateTime Date { get; set; }
 
         [InverseProperty("Event")]
         public virtual ICollection<Ticket> Tickets { get; set; }
+
+        public bool IsValidImage()
+        {
+            if (ImageFile == null)
+            {
+                return false;
+            }
+
+            var validTypes = new[] { "image/jpeg", "image/png", "image/gif" };
+            if (!validTypes.Contains(ImageFile.ContentType))
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

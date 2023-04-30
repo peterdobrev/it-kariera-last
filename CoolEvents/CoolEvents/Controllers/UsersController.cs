@@ -21,6 +21,11 @@ namespace CoolEvents.Controllers
         // GET: Users
         public async Task<IActionResult> Index()
         {
+            if (HttpContext.Session.GetString("IsAdmin") != "true")
+            {
+                return RedirectToAction("Login", "Users");
+            }
+
             var coolEventsDBContext = _context.Users.Include(u => u.Role);
             return View(await coolEventsDBContext.ToListAsync());
         }
@@ -47,6 +52,11 @@ namespace CoolEvents.Controllers
         // GET: Users/Create
         public IActionResult Create()
         {
+            if (HttpContext.Session.GetString("IsAdmin") != "true")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Name");
             return View();
         }
@@ -185,8 +195,8 @@ namespace CoolEvents.Controllers
                 // If the user is found, set a session variable to indicate that the user is authenticated
                 HttpContext.Session.SetString("IsAuthenticated", "true");
 
-                //Save his username so that we can print it later: Hello, {User}
-                HttpContext.Session.SetString("Username", user.Username);
+                //Save his id so that we can use it later
+                HttpContext.Session.SetString("UserId", Convert.ToString(user.Id));
 
 
                 //Check if admin and save result
@@ -207,7 +217,11 @@ namespace CoolEvents.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            return View();
+            if (HttpContext.Session.GetString("IsAuthenticated") != "true")
+            {
+                return View();
+            }
+            else return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
@@ -236,7 +250,7 @@ namespace CoolEvents.Controllers
 
             // Set the session variables to indicate that the user is authenticated
             HttpContext.Session.SetString("IsAuthenticated", "true");
-            HttpContext.Session.SetString("Username", user.Username);
+            HttpContext.Session.SetString("UserId", Convert.ToString(user.Id));
 
             // Redirect the user to the Home/Index action
             return RedirectToAction("Index", "Home");
@@ -246,7 +260,7 @@ namespace CoolEvents.Controllers
         {
             HttpContext.Session.SetString("IsAuthenticated", "false");
             HttpContext.Session.SetString("IsAdmin", "false");
-            HttpContext.Session.SetString("Username", "null");
+            HttpContext.Session.SetString("UserId", "null");
             return RedirectToAction("Index","Home");
         }
     }

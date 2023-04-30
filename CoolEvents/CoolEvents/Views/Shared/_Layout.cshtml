@@ -3,6 +3,7 @@
 @{
     var session = HttpContextAccessor.HttpContext?.Session;
     var controller = ViewContext.RouteData.Values["controller"].ToString();
+    var action = ViewContext.RouteData.Values["action"].ToString();
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -37,12 +38,12 @@
                         <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
                             <ul class="navbar-nav d-sm-inline-flex flex-grow-1 justify-content-end">
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Index">Events Control Panel</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Index">Events</a>
                                 </li>
                                 @if (session.GetString("IsAdmin") == "true")
                                 {
                                     <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Users Control Panel</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Users Control</a>
                                     </li>
                                 }
                                 <li class="nav-item">
@@ -55,13 +56,24 @@
                     {
                         // Get the current controller and action
                         string controllerName = ViewContext.RouteData.Values["controller"].ToString();
+                        string actionName = ViewContext.RouteData.Values["action"].ToString();
                         // Check if the user is not on the Login page or the Register page
-                        if (controllerName != "Users")
+                        if (actionName == "Register")
                         {
                             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
                                 <ul class="navbar-nav d-sm-inline-flex flex-grow-1 justify-content-end">
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Login">Login</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                        else if(actionName == "Login")
+                        {
+                            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                                <ul class="navbar-nav d-sm-inline-flex flex-grow-1 justify-content-end">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Register">Register</a>
                                     </li>
                                 </ul>
                             </div>
