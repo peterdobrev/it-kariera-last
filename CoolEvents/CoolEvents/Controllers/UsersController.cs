@@ -190,7 +190,7 @@ namespace CoolEvents.Controllers
 
 
                 //Check if admin and save result
-                if (user.Role.Name == "Admin")
+                if (user.RoleId == 1)
                 {
                     HttpContext.Session.SetString("IsAdmin", "true");
                 }
@@ -242,5 +242,12 @@ namespace CoolEvents.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public IActionResult Logout()
+        {
+            HttpContext.Session.SetString("IsAuthenticated", "false");
+            HttpContext.Session.SetString("IsAdmin", "false");
+            HttpContext.Session.SetString("Username", "null");
+            return RedirectToAction("Index","Home");
+        }
     }
 }
